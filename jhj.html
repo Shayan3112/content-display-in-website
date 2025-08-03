@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <footer class="text-center">
+    
+        <div class="container">
+    
+            <div class="row align-items-center">
+    
+                <div class="col-md-6 mb-3 mb-md-0">
+    
+                    <p class="mb-0">&copy; 2025 Md Shayan Shoukat. All rights reserved.</p>
+
+                    <header class="text center"></header>
+
+                    <div class="container"></div>
+
+                    <p></p>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+        </div>
+    
+    </footer>
+<head>
+    <title>Stopwatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .wrapper {
+            text-align: center;
+            padding: 20px;
+        }
+        p {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #0040ff;
+        }
+        button {
+            margin: 10px;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+        }
+
+        button:hover {
+
+         box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+
+        }
+
+        button:active {
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+        }
+
+        #button-start {
+
+            background-color: #007bff;
+            color: white;
+            border: none;
+
+        }
+
+        #button-start:hover {
+            background-color: #b30048;
+
+        }
+
+        #button-stop {
+ background-color: #645906;
+            color: white;
+            border: none;
+
+        }
+
+        #button-stop:hover {
+  background-color: #3cac8d;
+
+        }
+
+        #button-reset {
+            background-color: #3a639d;
+            color: white;
+            border: none;
+
+        }
+
+        #button-reset:hover {
+            background-color: #cc9832;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <h1>Stopwatch</h1>
+        <p><span id="seconds">00</span>:<span id="milliseconds">00</span></p>
+        <button id="button-start" class="btn btn-primary">begin</button>
+        <button id="button-stop" class="btn btn-danger">Stop</button>
+        <button id="button-reset" class="btn btn-success">Reset</button>
+
+    </div>
+    <script>
+
+        window.onload = function () {
+            var seconds = 0;
+            var milliseconds = 0;
+            var appendMilliseconds = document.getElementById("milliseconds");
+            var appendSeconds = document.getElementById("seconds");
+            var buttonStart = document.getElementById('button-start');
+            var buttonStop = document.getElementById('button-stop');
+            var buttonReset = document.getElementById('button-reset');
+            var Interval;
+            buttonStart.onclick = function () {
+                clearInterval(Interval);
+                Interval = setInterval(startTimer, 10);
+
+            };
+
+            buttonStop.onclick = function () {
+                clearInterval(Interval);
+
+            };
+
+            buttonReset.onclick = function () {
+                clearInterval(Interval);
+
+                milliseconds = 0;
+                seconds = 0;
+                appendMilliseconds.innerHTML = "00";
+                appendSeconds.innerHTML = "00";
+
+            };
+
+            function startTimer() {
+                milliseconds++; // increment milliseconds milliseconds= milliseconds + 1
+                if (milliseconds <= 9) {
+                    appendMilliseconds.innerHTML = "0" + milliseconds;
+
+                }
+
+                if (milliseconds > 9) {
+                    appendMilliseconds.innerHTML = milliseconds;
+
+                }
+
+                if (milliseconds > 99) {
+                    seconds++; // increment seconds seconds = seconds + 1
+                    appendSeconds.innerHTML = "0" + seconds;
+                    milliseconds = 0;
+                    appendMilliseconds.innerHTML = "0";
+
+                }
+
+
+                if (seconds > 9) {
+                    appendSeconds.innerHTML = seconds;
+
+                }
+
+            }
+
+        };
+
+    </script>
+</body>
+</html>
